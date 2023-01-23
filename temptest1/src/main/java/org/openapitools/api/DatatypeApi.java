@@ -6,6 +6,8 @@
 package org.openapitools.api;
 
 import org.openapitools.model.RLSDataTypePOSTAPISchema;
+import org.openapitools.services.DataTypeService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -14,6 +16,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +33,11 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
+
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-01-23T13:39:37.615092+13:00[Pacific/Auckland]")
 @Validated
 @Tag(name = "datatype", description = "the datatype API")
 public interface DatatypeApi {
-
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
@@ -57,7 +61,7 @@ public interface DatatypeApi {
         value = "/datatype",
         produces = { "application/json" }
     )
-    default ResponseEntity<RLSDataTypePOSTAPISchema> datatypeGet(
+    default ResponseEntity<List<RLSDataTypePOSTAPISchema>> datatypeGet(
         
     ) {
         getRequest().ifPresent(request -> {

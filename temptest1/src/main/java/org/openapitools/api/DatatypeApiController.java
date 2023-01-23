@@ -1,8 +1,7 @@
 package org.openapitools.api;
 
 import org.openapitools.model.RLSDataTypePOSTAPISchema;
-
-
+import org.openapitools.services.DataTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.validation.constraints.*;
@@ -26,12 +29,15 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
+@AllArgsConstructor
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-01-23T13:39:37.615092+13:00[Pacific/Auckland]")
-@Controller
+@RestController
 @RequestMapping("${openapi.recordLocator.base-path:/rls}")
 public class DatatypeApiController implements DatatypeApi {
 
     private final NativeWebRequest request;
+    @Autowired
+    public DataTypeService dataTypeService;
 
     @Autowired
     public DatatypeApiController(NativeWebRequest request) {
@@ -41,6 +47,11 @@ public class DatatypeApiController implements DatatypeApi {
     @Override
     public Optional<NativeWebRequest> getRequest() {
         return Optional.ofNullable(request);
+    }
+
+    @Override
+    public ResponseEntity<List<RLSDataTypePOSTAPISchema>> datatypeGet(){
+        return new ResponseEntity<>(dataTypeService.getAllDataTypes(),HttpStatus.OK);
     }
 
 }
