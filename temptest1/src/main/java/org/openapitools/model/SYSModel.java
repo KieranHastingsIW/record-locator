@@ -1,29 +1,17 @@
 package org.openapitools.model;
 
-import java.net.URI;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.*;
 import javax.annotation.Generated;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**

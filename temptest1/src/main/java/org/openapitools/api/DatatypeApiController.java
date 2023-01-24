@@ -28,10 +28,6 @@ public class DatatypeApiController implements DatatypeApi {
     @Autowired
     public DataTypeService dataTypeService;
 
-    @Autowired
-    public DatatypeApiController(NativeWebRequest request) {
-        this.request = request;
-    }
 
     @Override
     public Optional<NativeWebRequest> getRequest() {
