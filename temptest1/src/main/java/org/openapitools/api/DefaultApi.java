@@ -5,15 +5,12 @@
  */
 package org.openapitools.api;
 
-import org.openapitools.model.RLSPOSTAPISchema;
-import org.openapitools.model.RLSSYSTEMPOSTAPISchema;
+import org.openapitools.model.RLModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,12 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
@@ -35,6 +29,7 @@ import javax.annotation.Generated;
 @Tag(name = "default", description = "the default API")
 public interface DefaultApi {
 
+    
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
@@ -52,7 +47,7 @@ public interface DefaultApi {
         summary = "Retrieve locations",
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = RLSSYSTEMPOSTAPISchema.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = List.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad Request")
         }
@@ -62,9 +57,9 @@ public interface DefaultApi {
         value = "/",
         produces = { "application/json" }
     )
-    default ResponseEntity<RLSSYSTEMPOSTAPISchema> rootGet(
+    default ResponseEntity<List<RLModel>> rootGet(
         @NotNull @Parameter(name = "patientid", description = "NHI Number", required = true) @Valid @RequestParam(value = "patientid", required = true) String patientid,
-        @Parameter(name = "datatype", description = "Datatype key") @Valid @RequestParam(value = "datatype", required = false) String datatype
+        @Parameter(name = "datatype", description = "Datatype key") @Valid @RequestParam(value = "datatype", required = false) Optional<Long> datatype
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -91,7 +86,7 @@ public interface DefaultApi {
         summary = "Insert or update locations",
         responses = {
             @ApiResponse(responseCode = "201", description = "Created", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = RLSSYSTEMPOSTAPISchema.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = RLModel.class))
             })
         }
     )
@@ -101,8 +96,8 @@ public interface DefaultApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<RLSSYSTEMPOSTAPISchema> rootPost(
-        @Parameter(name = "RLSPOSTAPISchema", description = "", required = true) @Valid @RequestBody RLSPOSTAPISchema rlSPOSTAPISchema
+    default ResponseEntity<RLModel> rootPost(
+        @Parameter(name = "RLSPOSTAPISchema", description = "", required = true) @Valid @RequestBody RLModel rlSPOSTAPISchema
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

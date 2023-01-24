@@ -90,6 +90,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RLS_DataType_POST_API_Schema'
 components:
   schemas:
     RLS_DataType_POST_API_Schema:

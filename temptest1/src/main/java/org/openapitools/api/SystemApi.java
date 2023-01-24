@@ -5,7 +5,7 @@
  */
 package org.openapitools.api;
 
-import org.openapitools.model.RLSSYSTEMPOSTAPISchema;
+import org.openapitools.model.SYSModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -49,7 +49,7 @@ public interface SystemApi {
         summary = "Retriev all systems",
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = RLSSYSTEMPOSTAPISchema.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SYSModel.class))
             }),
             @ApiResponse(responseCode = "400", description = "bad request")
         }
@@ -59,7 +59,7 @@ public interface SystemApi {
         value = "/system",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<RLSSYSTEMPOSTAPISchema>> systemGet(
+    default ResponseEntity<List<SYSModel>> systemGet(
         
     ) {
         getRequest().ifPresent(request -> {
@@ -95,7 +95,7 @@ public interface SystemApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Void> systemPost(
-        @Parameter(name = "RLSSYSTEMPOSTAPISchema", description = "", required = true) @Valid @RequestBody RLSSYSTEMPOSTAPISchema rlSSYSTEMPOSTAPISchema
+        @Parameter(name = "RLSSYSTEMPOSTAPISchema", description = "", required = true) @Valid @RequestBody SYSModel rlSSYSTEMPOSTAPISchema
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 

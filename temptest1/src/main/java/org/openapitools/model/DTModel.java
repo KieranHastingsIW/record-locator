@@ -3,14 +3,19 @@ package org.openapitools.model;
 import java.net.URI;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.annotation.Generated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -29,10 +34,11 @@ import lombok.*;
 @Table(name="DATATYPE_TBL")
 @JsonTypeName("RLS_DataType_POST_API_Schema")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-01-23T13:39:37.615092+13:00[Pacific/Auckland]")
-public class RLSDataTypePOSTAPISchema {
+public class DTModel {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "type_id")
   private long type_id;
   
   @JsonProperty("description")
@@ -43,6 +49,13 @@ public class RLSDataTypePOSTAPISchema {
   @Column(name = "rank", nullable = false)
   @JsonProperty("rank")
   private Integer rank;
+
+
+
+
+
+
+
 
   // public RLSDataTypePOSTAPISchema description(String description) {
   //   this.description = description;

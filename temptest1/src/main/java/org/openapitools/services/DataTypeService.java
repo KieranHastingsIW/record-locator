@@ -1,9 +1,12 @@
 package org.openapitools.services;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.openapitools.model.RLSDataTypePOSTAPISchema;
+import org.openapitools.model.DTModel;
 
 public interface DataTypeService {
-    List<RLSDataTypePOSTAPISchema> getAllDataTypes();
+    List<DTModel> getAllDataTypes();
+    DTModel createDataType(DTModel dataType);
+    public Optional<DTModel> getDataType(Long dataType);
 }
