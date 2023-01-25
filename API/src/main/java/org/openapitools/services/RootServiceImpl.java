@@ -45,7 +45,7 @@ public class RootServiceImpl implements RootService{
     public RLModel createRecord(RLModel recordLocation) {
         long dataType = recordLocation.getDataType();
         Long systemId = recordLocation.getSystemId();
-        if (dataTypeService.getDataType(dataType).isPresent() && systemService.getSystem(systemId).isPresent()){
+        if (dataTypeService.getDataType(dataType) != null && systemService.getSystem(systemId).isPresent()){
             return locationRepository.save(recordLocation);
         }
         else {return null;}

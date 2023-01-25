@@ -25,8 +25,15 @@ public class DataTypeServiceImpl implements DataTypeService{
         return dataTypeRepository.save(dataType);
     }
 
-    public Optional<DTModel> getDataType(Long dataTypeId){
-        return dataTypeRepository.findById(dataTypeId);
+    public DTModel getDataType(Long dataTypeId){
+        Optional<DTModel> dataType = dataTypeRepository.findById(dataTypeId);
+        if (dataType.isPresent()){
+            return dataType.get();
+        }
+        else{
+            return null;
+        }
     }
-    
+
+
 }

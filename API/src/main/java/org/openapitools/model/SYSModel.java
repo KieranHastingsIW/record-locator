@@ -47,6 +47,8 @@ public class SYSModel {
   @Column(name = "THIRD_PARTY_ID", nullable = false)
   private String thirdPartyId;
 
+
+  @Column(name = "LOCATION", nullable = false)
   @JsonProperty("location")
   private String location;
 
