@@ -24,19 +24,9 @@ services:
           - "5050:80"
 
 
+networks:
+  default:
+    driver: rl-net
 
-
-
-  mtdb:
-        image: 'postgres:13.1-alpine'
-        container_name: mtdb
-        environment:
-            - POSTGRES_USER=dbusername                                     ### replace the DB-USERNAME with your desired USERNAME
-            - POSTGRES_PASSWORD=dbusername                                ### replace the DB-PASSWORD with your desired PASSWORD
-        volumes:
-          - "./database_schema/init_mtdb.sql:/tmp/init_mtdb.sql"
-          - "./database_schema/mtdb:/var/lib/postgresql/data"
-        ports:
-          - "5432:5432"
   
 
