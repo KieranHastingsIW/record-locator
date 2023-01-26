@@ -5,12 +5,12 @@ services:
         container_name: rldb
         environment:
             - POSTGRES_USER=dbusername                                     ### replace the DB-USERNAME with your desired USERNAME
-            - POSTGRES_PASSWORD=dbusername                               ### replace the DB-PASSWORD with your desired PASSWORD
+            - POSTGRES_PASSWORD=dbusername                                ### replace the DB-PASSWORD with your desired PASSWORD
         volumes:
           - "./database_schema/init_rls.sql:/tmp/init_rls.sql"
-          - "./database_schema/database:/var/lib/postgresql/data"
+          - "./database_schema/rldb:/var/lib/postgresql/data"
         ports:
-          - "1132:1132"
+          - "5431:5432"
   pgadmin:
       container_name: pgadmin4_container
 

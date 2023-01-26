@@ -1,6 +1,7 @@
 package org.openapitools.RecordLocatorControllers;
 
 
+import org.apache.catalina.connector.Response;
 import org.openapitools.model.SYSModel;
 import org.openapitools.services.SystemService;
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,6 @@ public class SystemApiController implements SystemApi {
     public ResponseEntity<List<SYSModel>> systemGet(){
         return new ResponseEntity<>(systemService.getAllSystems(), HttpStatus.OK);
     }
+
 
 }

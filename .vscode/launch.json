@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MedtechsystemApplication",
+            "request": "launch",
+            "mainClass": "com.metech.medtechsystem.MedtechsystemApplication",
+            "projectName": "medtechsystem"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-OpenApiGeneratorApplication<openapi-spring>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
