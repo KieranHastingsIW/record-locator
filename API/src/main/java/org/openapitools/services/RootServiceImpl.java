@@ -3,6 +3,7 @@ package org.openapitools.services;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.openapitools.model.RLModel;
 import org.openapitools.repository.LocationRepository;
 import org.springframework.stereotype.Service;
@@ -21,16 +22,15 @@ public class RootServiceImpl implements RootService{
     private SystemService systemService;
 
     @Override
-    public List<RLModel> getLocations(String patientid, Optional<Long> datatype) {
-        if (datatype.isPresent() == false){
+    public List<RLModel> getLocations(String patientid) {
             Optional<List<RLModel>> rls = locationRepository.findAllByPatientId(patientid);
             return unwrap(rls);
-        }
-        else{
-            Optional<List<RLModel>> rls = locationRepository.findAllByPatientIdAndDataType(patientid,datatype.get());
-            return unwrap(rls);
-        }
+    }
 
+    @Override
+    public List<RLModel> getRecordLocatorWithDataType( String patientId,  Long dataType){
+            Optional<List<RLModel>> rls = locationRepository.findAllByPatientIdAndDataType(patientId, dataType);
+            return unwrap(rls);
     }
 
     public List<RLModel> unwrap(Optional<List<RLModel>> optionalList){
@@ -43,7 +43,8 @@ public class RootServiceImpl implements RootService{
 
     @Override
     public RLModel createRecord(RLModel recordLocation) {
-        long dataType = recordLocation.getDataType();
+
+        Long dataType = recordLocation.getDataType();
         Long systemId = recordLocation.getSystemId();
         if (dataTypeService.getDataType(dataType) != null && systemService.getSystem(systemId).isPresent()){
             return locationRepository.save(recordLocation);

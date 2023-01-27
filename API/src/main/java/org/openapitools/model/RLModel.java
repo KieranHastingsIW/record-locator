@@ -45,8 +45,7 @@ public class RLModel {
   
 
 
-  @JsonProperty("patientid")
-  @Column(name = "PATIENT_ID", nullable = false)
+  @Column(name = "patient_id", nullable = false)
   private String patientId;
 
   // public RLSPOSTAPISchema systemid(Integer systemid) {
